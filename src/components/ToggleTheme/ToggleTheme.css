@@ -1,0 +1,39 @@
+:root {
+    --bg-color: rgb(255, 255, 255);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: var(--bg-color);
+}
+
+.toggle {
+    position: relative;
+    border: 1px solid black;
+    width: 50px;
+    height: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.circle {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    transition: left 0.4s ease-in;
+}
+.active {
+    left: 30px;
+}
+.dark-theme {
+    --bg-color: rgba(71, 71, 71, 0.452);
+}
