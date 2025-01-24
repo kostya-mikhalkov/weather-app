@@ -1,7 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import City from '../../interface/cityInterface';
 
-const initialState = {
-    toggle: false
+interface AppState {
+    toggle: boolean;
+    city: City[];
+}
+
+const initialState: AppState = {
+    toggle: false,
+    city: []
 }
 
 const appSlice = createSlice({
@@ -10,9 +17,12 @@ const appSlice = createSlice({
     reducers: {
         toggleChange: (state) => {
             state.toggle = !state.toggle;
+        },
+        cityCoordinates: (state, action: PayloadAction<City[]>) => {
+            state.city = action.payload;
         }
     }
 })
 
-export const {toggleChange} = appSlice.actions;
+export const { toggleChange, cityCoordinates } = appSlice.actions;
 export default appSlice.reducer;
