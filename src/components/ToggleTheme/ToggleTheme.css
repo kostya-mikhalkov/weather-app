@@ -1,5 +1,5 @@
 :root {
-    --bg-color: rgb(255, 255, 255);
+    --bg-color: linear-gradient(90deg, rgba(240,206,229,1) 1%, rgba(232,254,79,0.7875525210084033) 31%, rgba(255,244,115,0.9556197478991597) 81%);
 }
 
 body {
@@ -8,7 +8,11 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-color: var(--bg-color);
+    background: var(--bg-color);
+}
+
+.wrapper {
+    margin-top: 8px;
 }
 
 .wrapper_title {
@@ -31,7 +35,7 @@ body {
     transform: translateY(-50%);
     width: 15px;
     height: 15px;
-    background-color: rgb(0, 0, 0);
+    background: rgb(0, 0, 0);
     border-radius: 50%;
     transition: left 0.4s ease-in;
 }

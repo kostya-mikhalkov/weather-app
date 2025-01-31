@@ -4,27 +4,38 @@ import ToggleTheme from './components/ToggleTheme/ToggleTheme';
 import CitySearchInput from './components/CitySearchInput/CitySearchInput';
 import fetchCoordinates from './utils/fetchHelper';
 import { cityCoordinates } from './store/slice/appSlice';
+import { changeLoading } from './store/slice/appSlice';
 import { RootState } from './store/store';
 import './App.css';
 
 function App() {
-  const stateCity = useSelector((state: RootState) => state.weather.city);
+
+  const cityNameState = useSelector((state: RootState) => state.weather.cityName);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (stateCity.length === 0) {
-        const data = await fetchCoordinates();
-        if (data !== undefined) dispatch(cityCoordinates(data))
-      }
+    if (cityNameState !== '') {
+      dispatch(changeLoading(true))
     }
-    fetchData()
-  }, []);
+    const timer = setTimeout(() => {
+      if (cityNameState) {
+        fetchCoordinates(cityNameState).then((data) => {
+          if (data !== undefined) dispatch(cityCoordinates(data));
+        });
+      }
+      dispatch(changeLoading(false))
+    }, 1000);
+  
+    return () => clearTimeout(timer);
+  }, [cityNameState]);
+  
 
   return (
     <div className="App">
-      <ToggleTheme />
-      <CitySearchInput />
+      <div className="header">
+        <ToggleTheme />
+        <CitySearchInput />
+      </div>
     </div>
   );
 }

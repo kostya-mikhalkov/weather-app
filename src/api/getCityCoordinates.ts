@@ -1,7 +1,8 @@
 import City from "../interface/cityInterface";
 
-const getCityCoordinates = async () => {
-    const url: string = 'https://data-api.oxilor.com/rest/countries?key=wS7FR70XO3cVdQpZiOS4yYjDZz7WiR&lng=en';
+const getCityCoordinates = async (cityName: string) => {
+    const apiKey = 'pk.ff2a4033f0cd2ae9e3035c5d6136c1f3'; 
+    const url: string = `https://api.locationiq.com/v1/search.php?key=${apiKey}&q=${cityName}&format=json&accept-language=en`;
     try {
         const response = await fetch(url);
 
@@ -11,10 +12,13 @@ const getCityCoordinates = async () => {
 
         const data = await response.json();
         const updateData: City[] = data.map((city: any) => {
-            return {
-                name: city.name,
-                latitude: city.latitude,
-                longitude: city.longitude
+            if (city.class === 'boundary' && city.type === 'administrative') {
+                return {
+                    id: city.place_id,
+                    name: city.display_name,
+                    latitude: city.lat,
+                    longitude: city.lon
+                }
             }
         });
         return updateData;

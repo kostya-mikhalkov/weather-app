@@ -1,7 +1,7 @@
 import getCityCoordinates from "../api/getCityCoordinates";
 
-const fetchCoordinates = async () => {
-    const coordinates = await getCityCoordinates();
+const fetchCoordinates = async (cityName: string) => {
+    const coordinates = await getCityCoordinates(cityName);
     return coordinates;
 };
 
