@@ -1,33 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Protest+Revolution&family=Smooch+Sans:wght@100..900&display=swap');
+
+.search-container {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+}
+
 .search-input-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 600px;
+    width: 100%;
     height: 40px;
     box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.25);
     border-radius: 40px;
-  }
-  
-  .search-input-wrapper input[type='text'] {
-    font-family: "Smoch Sans", serif;
+}
+
+.search-input-wrapper input[type='text'] {
+    font-family: "Smooch Sans", serif;
     font-weight: 400;
     font-style: normal;
     width: 100%;
-    max-width: 600px;
     height: 100%;
     border-radius: 40px;
     padding-left: 35px;
     border: none;
     font-size: 20px;
-  }
-  
-  .search-input-wrapper input[type='text']:focus {
-    outline: none;
-  }
+}
 
-  .search-btn {
+.search-input-wrapper input[type='text']:focus {
+    outline: none;
+}
+
+.search-btn {
     position: absolute;
     top: 10%;
     left: -15px;
@@ -35,42 +41,59 @@
     outline: none;
     border: none;
     background: transparent;
-  }
+}
 
-  .search-btn img {
+.search-btn img {
     width: 20px;
     height: 30px;
-  }
+}
 
-  .spinner {
+.spinner {
     position: absolute;
     top: 10%;
     left: 95%;
     width: 30px;
     height: 30px;
-  }
+}
 
-  .city-list {
+.city-list {
     position: absolute;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    top: 8.3%;
-    left: 29.3%;
+    width: 100%;
+    top: 100%;
+    left: 0;
     background-color: antiquewhite;
     list-style-type: none;
     border-radius: 10px;
-  }
-
-  .city-list_item {
-    cursor: pointer;
-  }
-
-  .city-list_item:first-child {
+    padding: 0;
     margin-top: 10px;
-  }
+    z-index: 10;
+}
 
-  .city-list_item:last-child {
+.city-list_item {
+    cursor: pointer;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.city-list_item:hover {
+    background-color: rgb(255, 194, 194);
+}
+
+.city-list_item:first-child {
+    margin-top: 10px;
+}
+
+.city-list_item:last-child {
     margin-bottom: 10px;
-  }
+}
+
+.city-not-found {
+    position: absolute;
+    left: 0;
+    max-width: 100%;
+    height: 15px;
+    border-radius: 15px;
+    background-color: rgb(253, 173, 173);
+    padding: 5px;
+}

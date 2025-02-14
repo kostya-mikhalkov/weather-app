@@ -1,8 +1,10 @@
 import {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
+import { motion } from "motion/react";
+import openMeteo from "../../utils/openMeteo";
 import City from '../../interface/cityInterface';
-import { addCityName } from "../../store/slice/appSlice";
+import { addCityName, changeLatitude, changeLongitude, changeCityNotFound } from "../../store/slice/appSlice";
 import searchIcon from '../../img/svg/search.svg';
 import spinner from '../../img/gif/spinner.gif';
 
@@ -10,16 +12,27 @@ import './CitySearchInput.css';
 
 const CitySearchInput = (): JSX.Element => {
     const [state, setState] = useState('');
-    const [latitude, setLatitude] = useState<number>();
-    const [longitude, setLongitude] = useState<number>();
     const [openSearchWindow, setOpenSearchWindow] = useState(false);
     const loading = useSelector((state: RootState) => state.weather.loading);
     const stateCityAPI = useSelector((state: RootState) => state.weather.city);
+    const latitude = useSelector((state: RootState) => state.weather.latitude);
+    const longitude = useSelector((state: RootState) => state.weather.longitude);
+    const cityNotFoundState = useSelector((state: RootState) => state.weather.cityNotFound);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(addCityName(state));
-    }, [state])
+        if (state === '') dispatch(changeCityNotFound(false));
+    }, [state]);
+
+    useEffect(() => {
+            if (stateCityAPI.length === 0) {
+                dispatch(changeCityNotFound(true));
+            } else {
+                const allNull = stateCityAPI.every((item: City | null) => !item);
+                dispatch(changeCityNotFound(allNull));
+            }
+    }, [stateCityAPI]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setState(e.target.value);
@@ -27,40 +40,58 @@ const CitySearchInput = (): JSX.Element => {
     };
 
     const handleCityClick = (e: React.MouseEvent<HTMLLIElement>) => {
-        setLatitude(Number(e.currentTarget.getAttribute('data-lat')));
-        setLongitude(Number(e.currentTarget.getAttribute('data-lon')));
+        e.preventDefault();
+        dispatch(changeLatitude(Number(e.currentTarget.getAttribute('data-lat'))));
+        dispatch(changeLongitude(Number(e.currentTarget.getAttribute('data-lon'))));
         setState(e.currentTarget.outerText);
         setOpenSearchWindow(false);
     }
 
-    return (
-        <div>
-        <form className="search-input-wrapper">
-            <input type="text"
-                   value={state}
-                   onChange={(e) => handleInputChange(e)}/>
-            <button className="search-btn" type="submit">
-                <img src={searchIcon} alt="search" />
-            </button>
-            {loading && <img src={spinner} className="spinner"/>}
-        </form>
-        {state && stateCityAPI && openSearchWindow && (
-            <ul className="city-list">
-                {stateCityAPI
-                    .filter((item: City) => item)
-                    .map((item: City) => {
-                        return (
-                            <li key={item.id}
-                                className="city-list_item"
-                                data-lat={item.latitude}
-                                data-lon={item.longitude}
-                                onClick={(e) => handleCityClick(e)}>
-                                {item.name}
-                            </li>
-                        )
-                    })}
-            </ul>
-        )}
+    const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (latitude !== null && longitude !== null) {
+            openMeteo(latitude, longitude, dispatch)
+        }
+    }
+
+    return ( 
+        <div className="search-container">
+            <form className="search-input-wrapper"
+                onSubmit={submitForm}>
+                <input type="text"
+                    placeholder="Search for your preffered city..."
+                    value={state}
+                    onChange={(e) => handleInputChange(e)}/>
+                <button className="search-btn" type="submit">
+                    <img src={searchIcon} alt="search" />
+                </button>
+                {cityNotFoundState && state ? <motion.div className="city-not-found"
+                                                initial={{opacity: 0, y: -200}}
+                                                animate={{opacity: 1, y: -35}}>
+                                                {state} city not found.
+                                    </motion.div> : null}
+                {loading && <img src={spinner} className="spinner"/>}
+            </form>
+            {state && stateCityAPI && openSearchWindow && (
+                <ul className="city-list">
+                    {stateCityAPI
+                        .filter((item: City) => item)
+                        .map((item: City, ind) => {
+                            return (
+                                <motion.li key={item.id}
+                                    className="city-list_item"
+                                    data-lat={item.latitude}
+                                    data-lon={item.longitude}
+                                    onClick={(e) => handleCityClick(e)}
+                                    initial={{opacity: 0, x: -100}}
+                                    animate={{opacity: 1, x: 0}}
+                                    transition={{ delay: ind * 0.2 }}>
+                                    {item.name}
+                                </motion.li>
+                            )
+                        })}
+                </ul>
+            )}
         </div>
     )
 }
