@@ -5,6 +5,7 @@ interface AppState {
     toggle: boolean;
     city: City[];
     cityName: string;
+    cityNameApp: string;
     loading: boolean;
     latitude: number | null;
     longitude: number | null;
@@ -17,6 +18,7 @@ const initialState: AppState = {
     toggle: false,
     city: [],
     cityName: '',
+    cityNameApp: '',
     loading: false,
     latitude: null,
     longitude: null,
@@ -55,6 +57,9 @@ const appSlice = createSlice({
         },
         changeCityTimeZone: (state, action: PayloadAction<string>) => {
             state.time_zone = action.payload;
+        },
+        addCityNameApp: (state, action: PayloadAction<string>) => {
+            state.cityNameApp = action.payload;
         }
     }
 })
@@ -68,6 +73,7 @@ export const {
     changeLongitude, 
     changeCityNotFound, 
     changeCityTime, 
-    changeCityTimeZone 
+    changeCityTimeZone,
+    addCityNameApp 
 } = appSlice.actions;
 export default appSlice.reducer;

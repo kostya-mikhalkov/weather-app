@@ -9,6 +9,7 @@ const getLocationByIP = async () => {
             return {
                 latitude: data.latitude,
                 longitude: data.longitude,
+                city: data.city
             }
         } catch (error) {
             throw new Error('eror')

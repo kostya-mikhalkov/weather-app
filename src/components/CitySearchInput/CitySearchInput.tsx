@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { motion } from "motion/react";
-import openMeteo from "../../utils/openMeteo";
+import openMeteo from "../../api/openMeteo";
 import City from '../../interface/cityInterface';
 import { addCityName, changeLatitude, changeLongitude, changeCityNotFound } from "../../store/slice/appSlice";
 import searchIcon from '../../img/svg/search.svg';

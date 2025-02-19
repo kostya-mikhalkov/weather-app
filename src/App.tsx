@@ -3,13 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import ToggleTheme from './components/ToggleTheme/ToggleTheme';
 import CitySearchInput from './components/CitySearchInput/CitySearchInput';
 import CurrentLocation from './components/CurrentLocation/CurrentLocation';
+import CityClock from './components/CityClock/CityClock';
 import fetchCoordinates from './utils/fetchHelper';
+import cityNameHelper from './utils/cityNameHelper';
 import { cityCoordinates } from './store/slice/appSlice';
 import getLocationByIP from './api/getLocationByIP';
-import openMeteo from './utils/openMeteo';
+import openMeteo from './api/openMeteo';
 import getTimeZone from './api/getTimeZoneAPI';
 import Location from './interface/locationInterface';
-import { changeLoading, changeLatitude, changeLongitude, changeCityTime, changeCityTimeZone, addCityName } from './store/slice/appSlice';
+import { changeLoading, changeLatitude, changeLongitude, changeCityTime, changeCityTimeZone, addCityNameApp } from './store/slice/appSlice';
 import { RootState } from './store/store';
 import './App.css';
 
@@ -43,7 +45,7 @@ const App: React.FC = () => {
             const result = await getTimeZone(latitude, longitude);
             dispatch(changeCityTime(result.formatted));
             dispatch(changeCityTimeZone(result.zoneName));
-            if (cityNameState === '') dispatch(addCityName(result.cityName))
+            dispatch(addCityNameApp(result.cityName))
           } catch (error) {
             console.log(error)
           }
@@ -76,6 +78,9 @@ const App: React.FC = () => {
         <ToggleTheme />
         <CitySearchInput />
         <CurrentLocation />
+      </div>
+      <div className='middle-section'>
+        <CityClock />
       </div>
     </div>
   );
