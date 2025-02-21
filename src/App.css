@@ -11,5 +11,7 @@
 }
 
 .middle-section {
+  display: flex;
+  gap: 55px;
   margin-top: 49px;
 }

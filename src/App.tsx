@@ -4,8 +4,8 @@ import ToggleTheme from './components/ToggleTheme/ToggleTheme';
 import CitySearchInput from './components/CitySearchInput/CitySearchInput';
 import CurrentLocation from './components/CurrentLocation/CurrentLocation';
 import CityClock from './components/CityClock/CityClock';
+import CityWeatherDetails from './components/CityWeatherDetails/CityWeatherDetails';
 import fetchCoordinates from './utils/fetchHelper';
-import cityNameHelper from './utils/cityNameHelper';
 import { cityCoordinates } from './store/slice/appSlice';
 import getLocationByIP from './api/getLocationByIP';
 import openMeteo from './api/openMeteo';
@@ -19,7 +19,6 @@ const App: React.FC = () => {
   const cityNameState = useSelector((state: RootState) => state.weather.cityName);
   const longitude = useSelector((state: RootState) => state.weather.longitude);
   const latitude = useSelector((state: RootState) => state.weather.latitude);
-  const timeCity = useSelector((state: RootState) => state.weather.time);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -81,6 +80,7 @@ const App: React.FC = () => {
       </div>
       <div className='middle-section'>
         <CityClock />
+        <CityWeatherDetails />
       </div>
     </div>
   );

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.city-weather {
+    width: 720px;
+    height: 330px;
+    border-radius: 30px;
+    box-shadow: 10px 10px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.city-weather__left {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    color: rgb(51, 85, 85);
+    width: 200px;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.city-weather__left-temp-title {
+    font-weight: 700;
+    font-size: 66px;
+    margin: 0;
+}
+
+.city-weather__left-temp-feelsLike {
+    position: absolute;
+    top: 31%;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.city-weather__left-sunriseSunset {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.city-weather__left-sunriseSunset-elem {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: 100px;
+    height: 54px;
+}
+
+.city-weather__left-sunriseSunset-elem-descr-title {
+    margin: 0;
+    font-size: 16px;
+}
+
+.city-weather__left-sunriseSunset-elem-descr-time {
+    font-size: 14px;
+}

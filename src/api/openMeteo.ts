@@ -1,5 +1,7 @@
 import { changeLoading } from "../store/slice/appSlice";
+import { addWeatherData } from "../store/slice/meteoSlice";
 import { AppDispatch } from "../store/store";
+import weatherCodeHelper from "../utils/weatherCodeHelper";
 
 const openMeteo = async (lat: number, lon: number, dispatch: AppDispatch) => {
     dispatch(changeLoading(true));
@@ -7,9 +9,9 @@ const openMeteo = async (lat: number, lon: number, dispatch: AppDispatch) => {
     const params = {
         latitude: lat.toString(),
         longitude: lon.toString(),
-        current: "temperature_2m,relative_humidity_2m,rain",
-        hourly: "temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,rain,wind_speed_10m,wind_speed_80m,soil_temperature_0cm,soil_temperature_6cm",
-        daily: "temperature_2m_max,temperature_2m_min",
+        current: "temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,pressure_msl,uv_index,weathercode",
+        daily: "sunrise,sunset",
+        timezone: "auto",
     };
 
     const queryString = new URLSearchParams(params).toString();
@@ -22,14 +24,21 @@ const openMeteo = async (lat: number, lon: number, dispatch: AppDispatch) => {
         }
 
         const data = await response.json();
-        console.log(data);
-
-        const currentTemperature = data.current.temperature_2m;
-        console.log("Текущая температура:", currentTemperature);
+        const weather = {
+            currentTemperature: Math.floor(data.current.temperature_2m) + data.current_units.temperature_2m,
+            feelsLikeTemperature: Math.floor(data.current.apparent_temperature) + data.current_units.apparent_temperature,
+            sunrise: data.daily.sunrise[0],
+            sunset: data.daily.sunset[0],
+            humidity: data.current.relative_humidity_2m + data.current_units.relative_humidity_2m,
+            windSpeed: data.current.wind_speed_10m + data.current_units.wind_speed_10m,
+            pressure: data.current.pressure_msl + data.current_units.pressure_msl,
+            uvIndex: data.current.uv_index + data.current_units.uv_index,
+            weatherDescription: weatherCodeHelper(data.current.weathercode)
+        }
+        dispatch(addWeatherData(weather));
         dispatch(changeLoading(false));
-        return data; 
     } catch (error) {
-        console.error("Ошибка:", error);
+        console.error("Error:", error);
         throw error;
     }
 };
