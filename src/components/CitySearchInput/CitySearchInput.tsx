@@ -15,6 +15,7 @@ const CitySearchInput = (): JSX.Element => {
     const [openSearchWindow, setOpenSearchWindow] = useState(false);
     const loading = useSelector((state: RootState) => state.weather.loading);
     const stateCityAPI = useSelector((state: RootState) => state.weather.city);
+    const cityNameState = useSelector((state: RootState) => state.weather.cityName);
     const latitude = useSelector((state: RootState) => state.weather.latitude);
     const longitude = useSelector((state: RootState) => state.weather.longitude);
     const cityNotFoundState = useSelector((state: RootState) => state.weather.cityNotFound);
@@ -60,7 +61,7 @@ const CitySearchInput = (): JSX.Element => {
                 onSubmit={submitForm}>
                 <input type="text"
                     placeholder="Search for your preffered city..."
-                    value={state}
+                    value={cityNameState}
                     onChange={(e) => handleInputChange(e)}/>
                 <button className="search-btn" type="submit">
                     <img src={searchIcon} alt="search" />

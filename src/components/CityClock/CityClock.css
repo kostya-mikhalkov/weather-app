@@ -3,6 +3,10 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: rgb(51, 85, 85);
     width: 510px;
     height: 330px;
     border-radius: 30px;
@@ -10,10 +14,6 @@
 }
 
 .city-clock_title, .city-clock_clock, .city-clock_date {
-    font-family: "Protest Revolution", sans-serif;
-    font-weight: 700;
-    font-size: 36px;
-    color: rgb(51, 85, 85);
     margin: 0;
     text-align: center;
 }
@@ -24,4 +24,8 @@
 
 .city-clock_date {
     font-size: 22px;
+}
+
+.color-light {
+    color: antiquewhite;
 }

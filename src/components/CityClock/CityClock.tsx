@@ -10,6 +10,7 @@ const CityClock: React.FC = () => {
     const[data, setData] = useState('');
     const cityName = useSelector((state: RootState) => state.weather.cityNameApp);
     const cityTime = useSelector((state: RootState) => state.weather.time);
+    const toggleState = useSelector((state: RootState) => state.weather.toggle);
 
     useEffect(() => {
         const time = new Date(cityTime);
@@ -51,7 +52,7 @@ const CityClock: React.FC = () => {
     }
 
     return (
-        <div className="city-clock">
+        <div className={!toggleState ? "city-clock" : "city-clock color-light"}>
             <h3 className="city-clock_title">{cityName}</h3>
             <div className="city-clock_clock">{formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}</div>
             <p className="city-clock_date">{data}</p>
