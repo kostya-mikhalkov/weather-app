@@ -2,6 +2,7 @@
 
 .city-weather {
     display: flex;
+    gap: 15px;
     font-family: "Poppins", sans-serif;
     color: rgb(51, 85, 85);
     width: 720px;
@@ -12,7 +13,7 @@
 
 .city-weather__left {
     position: relative;
-    width: 200px;
+    width: 240px;
     display: flex;
     gap: 50px;
     flex-direction: column;
@@ -30,7 +31,7 @@
 .city-weather__left-temp-feelsLike {
     position: absolute;
     top: 31%;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     margin: 0;
 }
@@ -80,7 +81,7 @@
 .city-weather__right {
     display: flex;
     align-items: center;
-    width: 420px;
+    width: 400px;
 }
 
 .city-weather__right-wrapper {
@@ -98,6 +99,7 @@
     align-items: center;
     gap: 2px;
     width: 150px;
+    margin-bottom: 15px;
 }
 
 .city-weather__right-wrapper-element-img {

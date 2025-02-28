@@ -31,6 +31,7 @@ const weatherCodeHelper = (code: number): string => {
         case 80:
         case 81:
         case 82:
+        case 85:
             weatherDescr = "Rain showers";
             break;
         case 95:

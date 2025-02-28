@@ -5,6 +5,7 @@ import CitySearchInput from './components/CitySearchInput/CitySearchInput';
 import CurrentLocation from './components/CurrentLocation/CurrentLocation';
 import CityClock from './components/CityClock/CityClock';
 import CityWeatherDetails from './components/CityWeatherDetails/CityWeatherDetails';
+import FiveDayForecast from './components/FiveDayForecast/FiveDayForecast';
 import fetchCoordinates from './utils/fetchHelper';
 import { cityCoordinates } from './store/slice/appSlice';
 import getLocationByIP from './api/getLocationByIP';
@@ -81,6 +82,9 @@ const App: React.FC = () => {
       <div className='middle-section'>
         <CityClock />
         <CityWeatherDetails />
+      </div>
+      <div className='footer-section'>
+        <FiveDayForecast />
       </div>
     </div>
   );

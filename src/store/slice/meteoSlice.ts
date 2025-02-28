@@ -10,6 +10,9 @@ interface MeteoInitialInterface {
     pressure: string;
     uvIndex: string;
     weatherDescription: string;
+    temperatureForecast: number[];
+    dateForecast: string[];
+    weatherCodeForecats: string[];
 }
 
 const initialState: MeteoInitialInterface = {
@@ -22,6 +25,9 @@ const initialState: MeteoInitialInterface = {
     pressure: '',
     uvIndex: '',
     weatherDescription: '',
+    temperatureForecast: [],
+    dateForecast: [],
+    weatherCodeForecats: []
 }
 
 const meteoSlice = createSlice({
@@ -38,6 +44,9 @@ const meteoSlice = createSlice({
             state.pressure = action.payload.pressure;
             state.uvIndex = action.payload.uvIndex;
             state.weatherDescription = action.payload.weatherDescription;
+            state.temperatureForecast = action.payload.temperatureForecast.slice(1);
+            state.dateForecast = action.payload.dateForecast.slice(1);
+            state.weatherCodeForecats = action.payload.weatherCodeForecats.slice(1);
         }
     }
 });
