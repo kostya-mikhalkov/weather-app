@@ -6,6 +6,7 @@ import CurrentLocation from './components/CurrentLocation/CurrentLocation';
 import CityClock from './components/CityClock/CityClock';
 import CityWeatherDetails from './components/CityWeatherDetails/CityWeatherDetails';
 import FiveDayForecast from './components/FiveDayForecast/FiveDayForecast';
+import HourlyForecast from './components/HourlyForecast/HourlyForecast';
 import fetchCoordinates from './utils/fetchHelper';
 import { cityCoordinates } from './store/slice/appSlice';
 import getLocationByIP from './api/getLocationByIP';
@@ -85,6 +86,7 @@ const App: React.FC = () => {
       </div>
       <div className='footer-section'>
         <FiveDayForecast />
+        <HourlyForecast />
       </div>
     </div>
   );

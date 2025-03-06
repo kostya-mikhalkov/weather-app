@@ -7,8 +7,10 @@ import './FiveDayForecast.css'
 
 const FiveDayForecast: React.FC = () => {
     const meteoState = useSelector((state: RootState) => state.meteo);
+    const toggleState = useSelector((state: RootState) => state.weather.toggle);
+
     return (
-        <div className="forecast">
+        <div className={!toggleState ? "forecast" : "forecast active-color"}>
             <h3 className="forecast-title">5 Days Forecast:</h3>
             <ul className="forecast-list">
               <FiveDayForecastElements key={0} weatherDescr={meteoState.weatherCodeForecats[0]} temperature={meteoState.temperatureForecast[0]} date={meteoState.dateForecast[0]}/>
