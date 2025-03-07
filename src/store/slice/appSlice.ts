@@ -7,6 +7,7 @@ interface AppState {
     cityName: string;
     cityNameApp: string;
     loading: boolean;
+    loadingOpenMeteo: boolean;
     latitude: number | null;
     longitude: number | null;
     cityNotFound: boolean;
@@ -20,6 +21,7 @@ const initialState: AppState = {
     cityName: '',
     cityNameApp: '',
     loading: false,
+    loadingOpenMeteo: true,
     latitude: null,
     longitude: null,
     cityNotFound: false,
@@ -42,6 +44,9 @@ const appSlice = createSlice({
         },
         changeLoading: (state, action: PayloadAction<boolean>) => {
             state.loading = action.payload;
+        },
+        changeLoadingOpenMeteo: (state, action: PayloadAction<boolean>) => {
+            state.loadingOpenMeteo = action.payload;
         },
         changeLatitude: (state, action: PayloadAction<number>) => {
             state.latitude = action.payload;
@@ -68,7 +73,8 @@ export const {
     toggleChange, 
     cityCoordinates, 
     addCityName, 
-    changeLoading, 
+    changeLoading,
+    changeLoadingOpenMeteo, 
     changeLatitude, 
     changeLongitude, 
     changeCityNotFound, 

@@ -1,4 +1,4 @@
-import { changeLoading } from "../store/slice/appSlice";
+import { changeLoadingOpenMeteo } from "../store/slice/appSlice";
 import timeFormattedAPI from "../utils/timeFortmattedAPI";
 import { addWeatherData } from "../store/slice/meteoSlice";
 import { AppDispatch } from "../store/store";
@@ -6,7 +6,7 @@ import weatherCodeHelper from "../utils/weatherCodeHelper";
 import findTimeIndex from "../utils/findTimeIndex";
 
 const openMeteo = async (lat: number, lon: number, dispatch: AppDispatch) => {
-    dispatch(changeLoading(true));
+    dispatch(changeLoadingOpenMeteo(true));
     const url: string = "https://api.open-meteo.com/v1/forecast";
     const params = {
         latitude: lat.toString(),
@@ -51,7 +51,7 @@ const openMeteo = async (lat: number, lon: number, dispatch: AppDispatch) => {
             hourlyWindSpeed: data.hourly.wind_speed_10m
         }
         dispatch(addWeatherData(weather));
-        dispatch(changeLoading(false));
+        dispatch(changeLoadingOpenMeteo(false));
     } catch (error) {
         console.error("Error:", error);
         throw error;

@@ -1,4 +1,5 @@
 .hourlyForecast {
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -18,7 +19,7 @@
 .hourlyForecast__title {
     font-size: 32px;
     font-weight: bold;
-    margin: 10px 0 10px 0;
+    margin: 0 0 10px 0;
 }
 
 .hourlyForecast__elements {
@@ -62,6 +63,14 @@
     align-items: center;
     width: 83px;
     height: 105px;
+}
+
+.spinnerOpenMeteo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
 }
 
 .dark {

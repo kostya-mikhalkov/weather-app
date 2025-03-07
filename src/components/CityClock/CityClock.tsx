@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import spinner from '../../img/gif/spinnerOpenMeteo.gif';
 import '../CityClock/CityClock.css';
 
 const CityClock: React.FC = () => {
@@ -11,6 +12,7 @@ const CityClock: React.FC = () => {
     const cityName = useSelector((state: RootState) => state.weather.cityNameApp);
     const cityTime = useSelector((state: RootState) => state.weather.time);
     const toggleState = useSelector((state: RootState) => state.weather.toggle);
+    const loading = useSelector((state: RootState) => state.weather.loadingOpenMeteo);
 
     useEffect(() => {
         const time = new Date(cityTime);
@@ -53,9 +55,11 @@ const CityClock: React.FC = () => {
 
     return (
         <div className={!toggleState ? "city-clock" : "city-clock color-light"}>
-            <h3 className="city-clock_title">{cityName}</h3>
-            <div className="city-clock_clock">{formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}</div>
-            <p className="city-clock_date">{data}</p>
+            {!loading ? <>
+                            <h3 className="city-clock_title">{cityName}</h3>
+                            <div className="city-clock_clock">{formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}</div>
+                            <p className="city-clock_date">{data}</p>
+                        </> : <img src={spinner} alt="spinner" className="spinnerOpenMeteo"/>}
         </div>
     )
 };
