@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kostya-mikhalkov/weather-app/static/css/main.89a35a5d.css",
-    "main.js": "/kostya-mikhalkov/weather-app/static/js/main.a8e0a294.js",
+    "main.js": "/kostya-mikhalkov/weather-app/static/js/main.12de108d.js",
     "static/media/spinner.gif": "/kostya-mikhalkov/weather-app/static/media/spinner.3d61e471e768c208950b.gif",
     "static/media/spinnerOpenMeteo.gif": "/kostya-mikhalkov/weather-app/static/media/spinnerOpenMeteo.afbe5ed95f7b9593a321.gif",
     "static/media/thunderstorm.png": "/kostya-mikhalkov/weather-app/static/media/thunderstorm.cc045fbb626b2275d1b4.png",
@@ -22,10 +22,10 @@
     "static/media/sunset-white.svg": "/kostya-mikhalkov/weather-app/static/media/sunset-white.5ce456d858596ba853d86b72ad76312d.svg",
     "index.html": "/kostya-mikhalkov/weather-app/index.html",
     "main.89a35a5d.css.map": "/kostya-mikhalkov/weather-app/static/css/main.89a35a5d.css.map",
-    "main.a8e0a294.js.map": "/kostya-mikhalkov/weather-app/static/js/main.a8e0a294.js.map"
+    "main.12de108d.js.map": "/kostya-mikhalkov/weather-app/static/js/main.12de108d.js.map"
   },
   "entrypoints": [
     "static/css/main.89a35a5d.css",
-    "static/js/main.a8e0a294.js"
+    "static/js/main.12de108d.js"
   ]
 }
