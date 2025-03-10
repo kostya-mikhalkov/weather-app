@@ -24,7 +24,7 @@ const CitySearchInput = (): JSX.Element => {
     useEffect(() => {
         dispatch(addCityName(state));
         if (state === '') dispatch(changeCityNotFound(false));
-    }, [state]);
+    }, [dispatch, state]);
 
     useEffect(() => {
             if (stateCityAPI.length === 0) {
@@ -33,7 +33,7 @@ const CitySearchInput = (): JSX.Element => {
                 const allNull = stateCityAPI.every((item: City | null) => !item);
                 dispatch(changeCityNotFound(allNull));
             }
-    }, [stateCityAPI]);
+    }, [dispatch, stateCityAPI]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setState(e.target.value);
@@ -71,7 +71,7 @@ const CitySearchInput = (): JSX.Element => {
                                                 animate={{opacity: 1, y: -35}}>
                                                 {state} city not found.
                                     </motion.div> : null}
-                {loading && <img src={spinner} className="spinner"/>}
+                {loading && <img src={spinner} className="spinner" alt="spinner"/>}
             </form>
             {state && stateCityAPI && openSearchWindow && (
                 <ul className="city-list">
