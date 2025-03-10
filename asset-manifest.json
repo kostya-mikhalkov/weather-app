@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/kostya-mikhalkov/weather-app/static/css/main.89a35a5d.css",
+    "main.js": "/kostya-mikhalkov/weather-app/static/js/main.a8e0a294.js",
+    "static/media/spinner.gif": "/kostya-mikhalkov/weather-app/static/media/spinner.3d61e471e768c208950b.gif",
+    "static/media/spinnerOpenMeteo.gif": "/kostya-mikhalkov/weather-app/static/media/spinnerOpenMeteo.afbe5ed95f7b9593a321.gif",
+    "static/media/thunderstorm.png": "/kostya-mikhalkov/weather-app/static/media/thunderstorm.cc045fbb626b2275d1b4.png",
+    "static/media/uv-black.svg": "/kostya-mikhalkov/weather-app/static/media/uv-black.e79dafab3d747334376790343a294678.svg",
+    "static/media/pressure-black.svg": "/kostya-mikhalkov/weather-app/static/media/pressure-black.c50b53a6a08c3efaf1037710a80ca3c4.svg",
+    "static/media/wind-black.svg": "/kostya-mikhalkov/weather-app/static/media/wind-black.d2aafc8bbc3dcfe03286d46264d5c655.svg",
+    "static/media/wind-white.svg": "/kostya-mikhalkov/weather-app/static/media/wind-white.c02aa049f11da510c53f08014f65a977.svg",
+    "static/media/uv-white.svg": "/kostya-mikhalkov/weather-app/static/media/uv-white.92fd7e817c67d41e4b94c2015c0e2e93.svg",
+    "static/media/humidity-black.svg": "/kostya-mikhalkov/weather-app/static/media/humidity-black.281bb323b0900d2ac5833803834e17a1.svg",
+    "static/media/humidity-white.svg": "/kostya-mikhalkov/weather-app/static/media/humidity-white.95ac51b242a15b8856f6727cdc12f5d3.svg",
+    "static/media/pressure-white.svg": "/kostya-mikhalkov/weather-app/static/media/pressure-white.0e23339c16be8aec446ca03bd03d3291.svg",
+    "static/media/search.svg": "/kostya-mikhalkov/weather-app/static/media/search.05d5ec6ebb14bf03c3c2ea391c576738.svg",
+    "static/media/location.svg": "/kostya-mikhalkov/weather-app/static/media/location.fd71886f438c7f191a6ddf217c83efff.svg",
+    "static/media/navigation.svg": "/kostya-mikhalkov/weather-app/static/media/navigation.efd33ad5586cb844625d026815190f05.svg",
+    "static/media/sunset-black.svg": "/kostya-mikhalkov/weather-app/static/media/sunset-black.2b15df05738980d5f583eff2977533be.svg",
+    "static/media/sunrise-black.svg": "/kostya-mikhalkov/weather-app/static/media/sunrise-black.de8e49260f1357fe423f44ae790f2eb9.svg",
+    "static/media/sunrise-white.svg": "/kostya-mikhalkov/weather-app/static/media/sunrise-white.0c77a53bc49021588d1d7cfde37c9148.svg",
+    "static/media/sunset-white.svg": "/kostya-mikhalkov/weather-app/static/media/sunset-white.5ce456d858596ba853d86b72ad76312d.svg",
+    "index.html": "/kostya-mikhalkov/weather-app/index.html",
+    "main.89a35a5d.css.map": "/kostya-mikhalkov/weather-app/static/css/main.89a35a5d.css.map",
+    "main.a8e0a294.js.map": "/kostya-mikhalkov/weather-app/static/js/main.a8e0a294.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89a35a5d.css",
+    "static/js/main.a8e0a294.js"
+  ]
+}
