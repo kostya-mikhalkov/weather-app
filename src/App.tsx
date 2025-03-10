@@ -36,7 +36,7 @@ const App: React.FC = () => {
       }
     }
     handleGetCurrentLocation();
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     if (latitude !== null && longitude !== null) {
@@ -53,7 +53,7 @@ const App: React.FC = () => {
         }
         getRealTimeAndTimeZone();
     }
-  }, [latitude, longitude]);
+  }, [latitude, longitude, dispatch]);
 
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const App: React.FC = () => {
     }, 200);
   
     return () => clearTimeout(timer);
-  }, [cityNameState]);
+  }, [cityNameState, dispatch]);
   
 
   return (

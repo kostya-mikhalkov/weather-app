@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import ReactDOM from 'react-dom/client';
@@ -10,7 +11,9 @@ if (container) {
   root.render(
     <Provider store={store}>
       <React.StrictMode>
-        <App />
+        <HashRouter>
+          <App />
+        </HashRouter>
       </React.StrictMode>
     </Provider>
   );
